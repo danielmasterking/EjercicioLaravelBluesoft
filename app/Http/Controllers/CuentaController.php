@@ -122,22 +122,30 @@ class CuentaController extends Controller
             $cuenta = Cuenta::where('numero_cuenta',$numeroCuenta)->first();
 
             if(!empty($cuenta)){
-                $nuevoSaldo = ($cuenta->saldo - $valor);
-
-                DB::table('cuenta')
-                ->where('numero_cuenta', $numeroCuenta)
-                ->update(['saldo' => $nuevoSaldo]);
-
-                $movimiento = new Movimientos;
-                $movimiento->numero_cuenta = $numeroCuenta;
-                $movimiento->valor = $valor;
-                $movimiento->tipo = 'R';
-
-                if($movimiento->save()){
-                    $code = 200;
-                }else {
+                
+                if($cuenta->saldo < $valor){
                     $code = 500;
-                    $errores[] = 'Error al realizar el retiro';
+                    $errores[] = 'Su saldo es insuficiente';
+
+                }
+
+                if(empty($errores)){
+                    $nuevoSaldo = ($cuenta->saldo - $valor);
+                    DB::table('cuenta')
+                    ->where('numero_cuenta', $numeroCuenta)
+                    ->update(['saldo' => $nuevoSaldo]);
+
+                    $movimiento = new Movimientos;
+                    $movimiento->numero_cuenta = $numeroCuenta;
+                    $movimiento->valor = $valor;
+                    $movimiento->tipo = 'R';
+
+                    if($movimiento->save()){
+                        $code = 200;
+                    }else {
+                        $code = 500;
+                        $errores[] = 'Error al realizar el retiro';
+                    }
                 }
             }else {
                 $code = 500;
