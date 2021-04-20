@@ -17,11 +17,14 @@ class CuentaController extends Controller
         if(empty($nombre)) {
             $code = 500;
             $errores[] = 'El nombre es obligatorio';
+            \Log::info("El nombre es obligatorio ");
         }
 
         if(empty($saldo)) {
             $code = 500;
             $errores[] = 'El saldo es obligatorio';
+
+            \Log::info("El saldo es obligatorio ");
         }
 
         if(empty($errores)){
@@ -37,6 +40,7 @@ class CuentaController extends Controller
             }else {
                 $code =500;
                 $errores[] ='Error al crear la cuenta';
+                \Log::info("Error al crear la cuenta ");
             }
         }
 
@@ -55,12 +59,15 @@ class CuentaController extends Controller
         if(empty($numeroCuenta)) {
             $code = 500;
             $errores[] = 'numero de cuenta invalido';
+            \Log::info("numero de cuenta invalido " . $numeroCuenta);
         }
 
 
         if(empty($valorConsignar)) {
             $code = 500;
             $errores[] = 'valor a aconsignar invalido';
+
+            \Log::info("valor a aconsignar invalido " . $numeroCuenta);
         }
 
         $nuevoSaldo = null;
@@ -88,10 +95,12 @@ class CuentaController extends Controller
                 }else {
                     $code = 500;
                     $errores[] = 'error al crear la consignacion';
+                    \Log::info("error al crear la consignacion " . $numeroCuenta);
                 }
             }else{
                 $code = 500;
                 $errores[] = 'Esta cuenta no existe';
+                \Log::info("error Esta cuenta no existe " . $numeroCuenta);
             }
         }
 
@@ -110,11 +119,15 @@ class CuentaController extends Controller
         if(empty($numeroCuenta)){
             $code = 500;
             $errores[] = 'Numero de cuenta invalido';
+
+            \Log::info("error numero de cuenta invalido");
         }
 
         if(empty($valor)){
             $code = 500;
             $errores[] = 'valor a retirar invalido';
+
+            \Log::info("error valor a retirar invalido");
         }
 
         if(empty($errores)){
@@ -126,6 +139,8 @@ class CuentaController extends Controller
                 if($cuenta->saldo < $valor){
                     $code = 500;
                     $errores[] = 'Su saldo es insuficiente';
+
+                    \Log::info("Error saldo insuficiente " . $numeroCuenta);
 
                 }
 
@@ -146,10 +161,14 @@ class CuentaController extends Controller
                         $code = 500;
                         $errores[] = 'Error al realizar el retiro';
                     }
+
+                    \Log::info("Guarda retiro de dinero " . $numeroCuenta);
                 }
             }else {
                 $code = 500;
                 $errores[] = 'Esta cuenta no existe';
+
+                \Log::info("error la cuenta no existe " . $numeroCuenta);
             }
         
         }
@@ -169,6 +188,8 @@ class CuentaController extends Controller
         if(empty($numeroCuenta)) {
             $errores[] = 'numero de cuenta invalido';
             $code = 500;
+
+            \Log::info("error numero de cuenta invalido");
         }
         $saldo = null;
         if(empty($errores)) {
@@ -178,6 +199,7 @@ class CuentaController extends Controller
             }else {
                 $errores[] = 'Esta cuenta no existe';
                 $code = 500;
+                \Log::info("error Esta cuenta no existe " . $numeroCuenta);
             }
         }
 
