@@ -44,9 +44,9 @@
 <h3>Tecnologias usadas</h3>
 
 <p>
-    Para esa aplicacion use el framework laravel 7.0 para el desarrollo de las api rest que expuse para una aplicacion en angular
-    mysql como motor de bases de datos para crear la base de datos a la que se conecta la aplicacion
-    composer que es el manejador de dependencias de laravel
+    Para esa aplicacion use el framework <b>laravel 7.0</b> para el desarrollo de las api rest que expuse para una aplicacion en <b>angular</b>
+    <b>mysql</b> como motor de bases de datos para crear la base de datos a la que se conecta la aplicacion
+    <b>composer</b> que es el manejador de dependencias de laravel
 </p>
 
 <h3>Explicacion logica de la aplicacion</h3>
