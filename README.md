@@ -60,3 +60,8 @@
         <li>Luego tenemos el modulo de consultar este recibe el numero de cuenta y el sistema devuelve el valor del saldo que posee en la cuenta</li>
     </ul>
 </p>
+
+<h3>Que hubiera echo si tubiera mas tiempo</h3>
+<p>
+    Si tubiera mas tiempo habria realizado una aplicacion mas completa , como trabajo actualmente pues me vi un poco reducido de tiempo  y  me falto realizar las pruebas unitarias espero haber demostrado mis  conocimientos al maximo
+</p>
